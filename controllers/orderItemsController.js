@@ -15,7 +15,13 @@ exports.getOrderItems = (req,res) => {
         .from('order_items') 
         .join('orders', 'order_items.order_id', '=', 'orders.id')
         .join('products', 'order_items.product_id', '=', 'products.id')
-        .groupBy('order_items.order_id')
+        .groupBy(
+            'order_items.order_id',
+            'orders.created_at',
+            'orders.customer_email',
+            "orders.customer_name",
+            "orders.total_amount",
+        )
     .then((data) => {
       res.status(200).json(data);
     })
