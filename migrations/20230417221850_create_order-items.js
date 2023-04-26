@@ -6,12 +6,12 @@ exports.up = function(knex) {
     return knex.schema.createTable('order_items', (table) => {
         table.uuid('id').primary();
         table
-            .uuid('product_id')
+            .increments('product_id')
             .references('products.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE'); 
         table
-            .uuid('order_id')
+            .increments('order_id')
             .references('orders.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');  

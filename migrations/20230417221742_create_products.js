@@ -4,7 +4,7 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable('products', (table) => {
-        table.uuid('id').primary();
+        table.increments('id').primary();
         table.string('product_name').notNullable();
         table.string('description').notNullable();
         table.string('category').notNullable();

@@ -38,7 +38,10 @@ exports.getOrders = (req, res) => {
           "=",
           "order_items.product_id"
         )
-      .groupBy("orders.id")
+      .groupBy(
+        "orders.id",
+        "sum_order_items.quantity"
+        )
     .orderBy("orders.created_at", "desc")
     .then((data) => {
       res.status(200).json(data);
