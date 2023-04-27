@@ -6,7 +6,7 @@ const { DB_HOST, DB_LOCAL_USER, DB_LOCAL_PASSWORD, DB_LOCAL_DBNAME,DB_URL } = pr
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 module.exports = {
-  client: "pg",
+  client: "mysql",
   connection: {
     host: DB_HOST,
     user: DB_LOCAL_USER,
