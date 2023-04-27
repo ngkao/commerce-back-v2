@@ -15,6 +15,8 @@ module.exports = {
   },
 };
 
+// old
+
 // module.exports = {
 //   development: {
 //     client: "mysql2",
