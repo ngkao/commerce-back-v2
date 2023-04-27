@@ -12,6 +12,7 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 const CLIENT_URL = process.env.CLIENT_URL;
 const STRIPE_SECRET = process.env.STRIPE_SECRET;
+const PORT = process.env.PORT;
 
 app.use(cors({
     origin: CLIENT_URL
@@ -221,6 +222,10 @@ const fulfillOrder = (lineItems, orderData) => {
 
     }
 
-app.listen(8080, () => {
-    console.log('Server has started');
+// app.listen(8080, () => {
+//     console.log('Server has started');
+// })
+
+app.listen(process.env.PORT || PORT, () => {
+    console.log(`Server has started ${PORT}`);
 })
