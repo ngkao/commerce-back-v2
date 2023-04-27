@@ -8,7 +8,8 @@ const { DB_HOST, DB_LOCAL_USER, DB_LOCAL_PASSWORD, DB_LOCAL_DBNAME } = process.e
 module.exports = {
   client: "mysql",
   connection: {
-    host: DB_HOST,
+    // host: DB_HOST,
+    host: "r4wkv4apxn9btls2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     user: DB_LOCAL_USER,
     password: DB_LOCAL_PASSWORD,
     database: DB_LOCAL_DBNAME,
