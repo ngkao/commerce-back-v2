@@ -15,7 +15,7 @@ module.exports = {
   },
 };
 
-//this worked database
+//this worked database Her
 // module.exports = {
 //   client: "mysql",
 //   connection: {
