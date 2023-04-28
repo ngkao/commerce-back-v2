@@ -53,7 +53,7 @@ exports.getProductsSold = (req, res) => {
         'products.sale_price as sale_price',
         'products.purchase_price as purchase_price',
         'products.image_url as image_url',
-        knex.raw('CAST(sum(order_items.quantity) AS INTEGER) as sold_quantity'),
+        knex.raw('CAST(sum(order_items.quantity) AS UNSIGNED INTEGER) as sold_quantity'),
 
       )
       .from("products")
