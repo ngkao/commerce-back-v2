@@ -1,19 +1,30 @@
 require("dotenv").config();
 // Update with your config settings.
 
-const { DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE } = process.env
+// const { DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE } = process.env
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 module.exports = {
   client: "mysql",
   connection: {
-    host: "r4wkv4apxn9btls2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    user: "hyu564i3b02pvzgs",
-    password: "yl6uhlypeua8i8kh",
-    database: "zvqc925fkshr3vrb",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
   },
 };
+
+//this worked
+// module.exports = {
+//   client: "mysql",
+//   connection: {
+//     host: "r4wkv4apxn9btls2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+//     user: "hyu564i3b02pvzgs",
+//     password: "yl6uhlypeua8i8kh",
+//     database: "zvqc925fkshr3vrb",
+//   },
+// };
 
 // old file
 
