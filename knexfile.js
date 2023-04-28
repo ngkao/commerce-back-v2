@@ -1,7 +1,6 @@
 require("dotenv").config();
 // Update with your config settings.
 
-// const { DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE } = process.env
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
