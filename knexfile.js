@@ -8,10 +8,10 @@ const { DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE } = process.env
 module.exports = {
   client: "mysql",
   connection: {
-    host: DB_HOST,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    database: DB_DATABASE,
+    host: "r4wkv4apxn9btls2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "hyu564i3b02pvzgs",
+    password: "yl6uhlypeua8i8kh",
+    database: "zvqc925fkshr3vrb",
   },
 };
 
@@ -42,5 +42,15 @@ module.exports = {
 //     user: DB_LOCAL_USER,
 //     password: DB_LOCAL_PASSWORD,
 //     database: DB_LOCAL_DBNAME,
+//   },
+// };
+
+// module.exports = {
+//   client: "mysql",
+//   connection: {
+//     host: DB_HOST,
+//     user: DB_USER,
+//     password: DB_PASSWORD,
+//     database: DB_DATABASE,
 //   },
 // };
