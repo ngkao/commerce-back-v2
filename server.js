@@ -106,7 +106,7 @@ app.post('/webhook', async (request, response) => {
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(request.rawBody, sig, endpointSecret, 'https://chic-palmier-6201f7.netlify.app/webhook');
+    event = stripe.webhooks.constructEvent(request.rawBody, sig, endpointSecret, 'https://snackpos.app/webhook');
   } catch (err) {
     console.log("Error Message",err.message);
     return response.status(400).send(`Webhook Error: ${err.message}`);
