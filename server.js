@@ -103,6 +103,9 @@ app.post('/webhook', async (request, response) => {
   const payload = request.body;
   const sig = request.headers['stripe-signature'];
 
+  console.log(`Received stripe-signature header: ${request.headers['stripe-signature']}`);
+  console.log(`sig variable value: ${sig}`);
+
   let event;
 
   try {
