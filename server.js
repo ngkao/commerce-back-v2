@@ -109,7 +109,7 @@ app.post('/webhook', async (request, response) => {
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(request.rawBody, sig, endpointSecret, 'https://snack-pos.herokuapp.com/webhook');
+    event = stripe.webhooks.constructEvent(request.rawBody, sig, endpointSecret);
   } catch (err) {
     console.log("Error Message",err.message);
     return response.status(400).send(`Webhook Error: ${err.message}`);
