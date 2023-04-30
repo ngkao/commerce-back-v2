@@ -99,7 +99,7 @@ const endpointSecret = `${STRIPE_SECRET}`;
 // Use body-parser to retrieve the raw body as a buffer
 const bodyParser = require('body-parser');
 
-app.post('/webhook', async (request, response) => {
+app.post('/webhook',express.raw({type: 'application/json'}), async (request, response) => {
   const payload = request.body;
   const sig = request.headers['stripe-signature'];
 
