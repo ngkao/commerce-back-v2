@@ -14,16 +14,31 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const STRIPE_SECRET = process.env.STRIPE_SECRET;
 const PORT = process.env.PORT;
 
+// Use body-parser to retrieve the raw body as a buffer
+const bodyParser = require('body-parser');
+
 app.use(cors({
     origin: CLIENT_URL
   }));
 
-app.use(express.json({
-    limit: '5mb',
-    verify: (req, res, buf) => {
-      req.rawBody = buf.toString();
+// app.use(express.json({
+//     limit: '5mb',
+//     verify: (req, res, buf) => {
+//       req.rawBody = buf.toString();
+//     }
+// }));
+
+app.use(bodyParser.json(setupForStripeWebhooks));
+
+const setupForStripeWebhooks = {
+    // Because Stripe needs the raw body, we compute it but only when hitting the Stripe callback URL.
+    verify: function (req, res, buf) {
+      var url = req.originalUrl;
+      if (url.startsWith('/webhook')) {
+        req.rawBody = buf.toString();
+      }
     }
-}));
+  };
 
 // GET Request Products
 app.use('/products', productRoutes);
@@ -96,8 +111,7 @@ app.post("/create-checkout-session", async (req,res) => {
 
 const endpointSecret = `${STRIPE_SECRET}`;
 
-// Use body-parser to retrieve the raw body as a buffer
-const bodyParser = require('body-parser');
+
 
 app.post('/webhook',express.raw({type: 'application/json'}), (request, response) => { // had async here
   const payload = request.body;
