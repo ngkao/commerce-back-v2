@@ -40,7 +40,7 @@ app.use(cors({
 // }));
 
 
-// Use body-parser to retrieve the raw body as a buffer
+// Use body-parser to retrieve the raw body as buffer
 
 
 // app.use(bodyParser.json(setupForStripeWebhooks));
