@@ -30,7 +30,7 @@ app.use(cors({
 
 app.use(bodyParser.json({
     verify: (req, res, buf) => {
-        req.rawBody
+        req.rawBody = buf
     }
 }));
 
