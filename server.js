@@ -129,14 +129,15 @@ const endpointSecret = `${STRIPE_SECRET}`;
 
 
 // app.post('/webhook',bodyParser.raw({type: 'application/json'}), (req, res) => { // had async here
-app.post('/webhook', (req, res) => { // had async here
+app.post('/webhook', async (req, res) => { // had async here
 
-//   const payload = req.body;
+  const payload = req.body;
   const sig = req.headers['stripe-signature'];
 
   console.log(`Received stripe-signature header: ${req.headers['stripe-signature']}`);
   console.log(`sig variable value: ${sig}`);
   console.log(`req.rawBody ${req.rawBody}`)
+  console.log(`payload ${payload}`)
 
   let event;
 
@@ -157,7 +158,7 @@ if (event.type === 'checkout.session.completed') {
       return res.status(400).end();
     }
 
-    const sessionWithLineItems = stripe.checkout.sessions.retrieve( // had await here before stripe
+    const sessionWithLineItems = await stripe.checkout.sessions.retrieve( // had await here before stripe
         session.id,
         {
         expand: ['line_items','line_items.data.price.product'],
