@@ -9,6 +9,7 @@ const app = express();
 const knex = require("knex")(require("./knexfile"));
 const { v4: uuid } = require("uuid");
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const bodyParser = require('body-parser');
 
 const CLIENT_URL = process.env.CLIENT_URL;
 const STRIPE_SECRET = process.env.STRIPE_SECRET;
@@ -20,17 +21,21 @@ app.use(cors({
     origin: CLIENT_URL
   }));
 
-app.use(express.json({
-    limit: '5mb',
+// app.use(express.json({
+//     limit: '5mb',
+//     verify: (req, res, buf) => {
+//       req.rawBody = buf.toString();
+//     }
+// }));
+
+app.use(bodyParser.json({
     verify: (req, res, buf) => {
-      req.rawBody = buf.toString();
+        req.rawBody
     }
 }));
 
-// app.use(express.json());
-
 // Use body-parser to retrieve the raw body as a buffer
-const bodyParser = require('body-parser');
+
 
 // app.use(bodyParser.json(setupForStripeWebhooks));
 
@@ -117,21 +122,21 @@ const endpointSecret = `${STRIPE_SECRET}`;
 
 
 
-app.post('/webhook',express.raw({type: 'application/json'}), (request, response) => { // had async here
-  const payload = request.body;
-  const sig = request.headers['stripe-signature'];
+app.post('/webhook',express.raw({type: 'application/json'}), (req, res) => { // had async here
+  const payload = req.body;
+  const sig = req.headers['stripe-signature'];
 
-  console.log(`Received stripe-signature header: ${request.headers['stripe-signature']}`);
+  console.log(`Received stripe-signature header: ${req.headers['stripe-signature']}`);
   console.log(`sig variable value: ${sig}`);
 
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(request.rawBody, sig, endpointSecret);
+    event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret);
     // event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
   } catch (err) {
     console.log("Error Message",err.message);
-    return response.status(400).send(`Webhook Error: ${err.message}`);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
   }
   console.log(`Received event type: ${event.type}`);
 
@@ -156,7 +161,7 @@ if (event.type === 'checkout.session.completed') {
         fulfillOrder(lineItems, orderData);
     }
 }
-  response.status(200).end();
+  res.status(200).end();
 });
 
 
