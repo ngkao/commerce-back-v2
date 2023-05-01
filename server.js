@@ -19,8 +19,11 @@ const PORT = process.env.PORT;
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.use(bodyParser.json({
-    verify: (req, res, buf) => {
-        req.rawBody = buf
+    verify: function(req,res,buf) {
+        var url = req.originalUrl;
+        if (url.startsWith('/webhook')) {
+            req.rawBody = buf.toString()
+        }
     }
 }));
 
@@ -126,7 +129,7 @@ const endpointSecret = `${STRIPE_SECRET}`;
 
 
 // app.post('/webhook',bodyParser.raw({type: 'application/json'}), (req, res) => { // had async here
-app.post('/webhook', async (req, res) => { // had async here
+app.post('/webhook', (req, res) => { // had async here
 
 //   const payload = req.body;
   const sig = req.headers['stripe-signature'];
@@ -154,7 +157,7 @@ if (event.type === 'checkout.session.completed') {
       return res.status(400).end();
     }
 
-    const sessionWithLineItems = await stripe.checkout.sessions.retrieve( // had await here before stripe
+    const sessionWithLineItems = stripe.checkout.sessions.retrieve( // had await here before stripe
         session.id,
         {
         expand: ['line_items','line_items.data.price.product'],
