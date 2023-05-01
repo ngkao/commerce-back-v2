@@ -40,21 +40,6 @@ app.use(cors({
 // }));
 
 
-// Use body-parser to retrieve the raw body as buffer
-
-
-// app.use(bodyParser.json(setupForStripeWebhooks));
-
-// const setupForStripeWebhooks = {
-//     // Because Stripe needs the raw body, we compute it but only when hitting the Stripe callback URL.
-//     verify: function (req, res, buf) {
-//       var url = req.originalUrl;
-//       if (url.startsWith('/webhook')) {
-//         req.rawBody = buf.toString();
-//       }
-//     }
-//   };
-
 // GET Request Products
 app.use('/products', productRoutes);
 //GET Request Orders
@@ -128,8 +113,7 @@ const endpointSecret = `${STRIPE_SECRET}`;
 
 
 
-// app.post('/webhook',bodyParser.raw({type: 'application/json'}), (req, res) => { // had async here
-app.post('/webhook', async (req, res) => { // had async here
+app.post('/webhook', async (req, res) => { 
 
   const payload = req.body;
   const sig = req.headers['stripe-signature'];
@@ -143,7 +127,6 @@ app.post('/webhook', async (req, res) => { // had async here
 
   try {
     event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret);
-    // event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
   } catch (err) {
     console.log("Error Message",err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -158,7 +141,7 @@ if (event.type === 'checkout.session.completed') {
       return res.status(400).end();
     }
 
-    const sessionWithLineItems = await stripe.checkout.sessions.retrieve( // had await here before stripe
+    const sessionWithLineItems = await stripe.checkout.sessions.retrieve( 
         session.id,
         {
         expand: ['line_items','line_items.data.price.product'],
