@@ -16,6 +16,14 @@ const STRIPE_SECRET = process.env.STRIPE_SECRET;
 const PORT = process.env.PORT;
 
 
+app.use(bodyParser.urlencoded({extended: false}))
+
+app.use(bodyParser.json({
+    verify: (req, res, buf) => {
+        req.rawBody = buf
+    }
+}));
+
 
 app.use(cors({
     origin: CLIENT_URL
@@ -28,11 +36,6 @@ app.use(cors({
 //     }
 // }));
 
-app.use(bodyParser.json({
-    verify: (req, res, buf) => {
-        req.rawBody = buf
-    }
-}));
 
 // Use body-parser to retrieve the raw body as a buffer
 
@@ -122,11 +125,13 @@ const endpointSecret = `${STRIPE_SECRET}`;
 
 
 
-app.post('/webhook',express.raw({type: 'application/json'}), (req, res) => { // had async here
-  const payload = req.body;
+// app.post('/webhook',bodyParser.raw({type: 'application/json'}), (req, res) => { // had async here
+app.post('/webhook', (req, res) => { // had async here
+
+//   const payload = req.body;
   const sig = req.headers['stripe-signature'];
 
-  console.log(`Received stripe-signature header: ${req.headers['stripe-signature']}`);
+  console.log(`Received stripe-signature header: ${req.rawBody['stripe-signature']}`);
   console.log(`sig variable value: ${sig}`);
 
   let event;
