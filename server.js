@@ -98,7 +98,8 @@ app.post("/create-checkout-session", async (req,res) => {
                     quantity: item.quantity,
                 }
             }),
-            success_url: `https://img.freepik.com/premium-vector/success-payment-icon-flat-style-approved-money-vector-illustration-isolated-background-successful-pay-sign-business-concept_157943-1354.jpg?w=2000`,
+            success_url: `https://ngkao.dev/snack/success`,
+            // success_url: `https://img.freepik.com/premium-vector/success-payment-icon-flat-style-approved-money-vector-illustration-isolated-background-successful-pay-sign-business-concept_157943-1354.jpg?w=2000`,
             // success_url: `https://i.ibb.co/KFM2k9k/frame-2.png`,
             cancel_url: `${process.env.CLIENT_URL}/failure`,
 
