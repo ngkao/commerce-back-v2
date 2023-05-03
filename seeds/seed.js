@@ -271,145 +271,145 @@ exports.seed = async function(knex) {
   await knex('order_items').del()
   await knex('order_items').insert([
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a01', 
+      id: '1', 
       order_id: '1', 
       product_id: '1',
       quantity: '2'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a02', 
+      id: '2', 
       order_id: '1',
       product_id: '2', 
       quantity: '2'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a03', 
+      id: '3', 
       order_id: '2', 
       product_id: '5',
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a04', 
+      id: '4', 
       order_id: '2',
       product_id: '7', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a05', 
+      id: '5', 
       order_id: '3',
       product_id: '8', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a06', 
+      id: '6', 
       order_id: '4',
       product_id: '13', 
       quantity: '3'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a07', 
+      id: '7', 
       order_id: '5',
       product_id: '9', 
       quantity: '3'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a08', 
+      id: '8', 
       order_id: '6',
       product_id: '12', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a09', 
+      id: '9', 
       order_id: '6',
       product_id: '11', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a10', 
+      id: '10', 
       order_id: '6',
       product_id: '10', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 
+      id: '11', 
       order_id: '7',
       product_id: '4', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12', 
+      id: '12', 
       order_id: '8',
       product_id: '11', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a13', 
+      id: '13', 
       order_id: '9',
       product_id: '8', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a14', 
+      id: '14', 
       order_id: '10',
       product_id: '6', 
       quantity: '2'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a15', 
+      id: '15', 
       order_id: '11',
       product_id: '9', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a16', 
+      id: '16', 
       order_id: '11',
       product_id: '8', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a17', 
+      id: '17', 
       order_id: '12',
       product_id: '2', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a18', 
+      id: '18', 
       order_id: '13',
       product_id: '5', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a19', 
+      id: '19', 
       order_id: '14',
       product_id: '9', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a20', 
+      id: '20', 
       order_id: '14',
       product_id: '10', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a21', 
+      id: '21', 
       order_id: '15',
       product_id: '3', 
       quantity: '2'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22', 
+      id: '22', 
       order_id: '15',
       product_id: '7', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a23', 
+      id: '23', 
       order_id: '15',
       product_id: '8', 
       quantity: '1'
     },
     {
-      id: 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a24', 
+      id: '24', 
       order_id: '16',
       product_id: '10', 
       quantity: '1'

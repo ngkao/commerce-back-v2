@@ -10,11 +10,17 @@ const knex = require("knex")(require("./knexfile"));
 const { v4: uuid } = require("uuid");
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const bodyParser = require('body-parser');
+const NodeCache = require('node-cache');
 
 const CLIENT_URL = process.env.CLIENT_URL;
 const STRIPE_SECRET = process.env.STRIPE_SECRET;
 const PORT = process.env.PORT;
 
+const cache = new NodeCache({
+    stdTTL: 60, 
+    checkperiod: 120, 
+    useClones: false 
+  });
 
 app.use(bodyParser.urlencoded({extended: false}))
 
@@ -32,22 +38,91 @@ app.use(cors({
     origin: CLIENT_URL
   }));
 
-// app.use(express.json({
-//     limit: '5mb',
-//     verify: (req, res, buf) => {
-//       req.rawBody = buf.toString();
-//     }
-// }));
 
 
-// GET Request Products
-app.use('/products', productRoutes);
-//GET Request Orders
-app.use('/orders', orderRoutes);
-//GET Request Latest Timestamp
-app.use('/timestamp', timestampRoutes);
-//GET Request Order Items
-app.use('/items', orderItemsRoutes);
+// // GET Request Products
+// app.use('/products', productRoutes);
+// //GET Request Orders
+// app.use('/orders', orderRoutes);
+// //GET Request Latest Timestamp
+// app.use('/timestamp', timestampRoutes);
+// //GET Request Order Items
+// app.use('/items', orderItemsRoutes);
+
+
+//with cache 
+
+// GET Request Products with cache
+app.use('/products', (req, res, next) => {
+  const key = '__express__' + req.originalUrl || req.url;
+  const cachedData = cache.get(key);
+  if (cachedData) {
+    console.log('serving from cache /products');
+    res.send(cachedData);
+    return;
+  } else {
+    const originalSend = res.send;
+    res.send = function (data) {
+      cache.set(key, data);
+      originalSend.apply(res, arguments);
+    };
+    next();
+  }
+}, productRoutes);
+
+//GET Request Orders with cache
+app.use('/orders', (req, res, next) => {
+    const key = '__express__' + req.originalUrl || req.url;
+    const cachedData = cache.get(key);
+    if (cachedData) {
+      console.log('serving from cache /orders');
+      res.send(cachedData);
+      return;
+    } else {
+      const originalSend = res.send;
+      res.send = function (data) {
+        cache.set(key, data);
+        originalSend.apply(res, arguments);
+      };
+      next();
+    }
+  }, orderRoutes);
+
+//GET Request Latest Timestamp with cache
+app.use('/timestamp', (req, res, next) => {
+    const key = '__express__' + req.originalUrl || req.url;
+    const cachedData = cache.get(key);
+    if (cachedData) {
+      console.log('serving from cache /timestamp');
+      res.send(cachedData);
+      return;
+    } else {
+      const originalSend = res.send;
+      res.send = function (data) {
+        cache.set(key, data);
+        originalSend.apply(res, arguments);
+      };
+      next();
+    }
+  }, timestampRoutes);
+
+//GET Request Order Items with cache
+app.use('/items', (req, res, next) => {
+    const key = '__express__' + req.originalUrl || req.url;
+    const cachedData = cache.get(key);
+    if (cachedData) {
+      console.log('serving from cache /items');
+      res.send(cachedData);
+      return;
+    } else {
+      const originalSend = res.send;
+      res.send = function (data) {
+        cache.set(key, data);
+        originalSend.apply(res, arguments);
+      };
+      next();
+    }
+  }, orderItemsRoutes);
 
 
 //Stripe
