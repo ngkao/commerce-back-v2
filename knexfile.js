@@ -12,4 +12,7 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
   },
+  authPlugins: {
+    mysql_native_password: process.env.mysql_native_password
+  }
 };
