@@ -322,6 +322,6 @@ const fulfillOrder = (lineItems, orderData) => {
 //     console.log('Server has started');
 // })
 
-app.listen(process.env.PORT || PORT, () => {
+app.listen(process.env.PORT || PORT ||8080 , () => {
     console.log(`Server has started ${PORT}`);
 })
