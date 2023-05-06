@@ -22,6 +22,13 @@ const cache = new NodeCache({
     useClones: false 
   });
 
+const timestampCache = new NodeCache({
+    stdTTL: 30,
+    checkperiod: 60,
+    useClones: false,
+    ttl: 2 // custom TTL of 10 seconds
+});
+
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.use(bodyParser.json({
@@ -44,7 +51,7 @@ app.use(cors({
 // app.use('/products', productRoutes);
 // //GET Request Orders
 // app.use('/orders', orderRoutes);
-// //GET Request Latest Timestamp
+//GET Request Latest Timestamp
 // app.use('/timestamp', timestampRoutes);
 // //GET Request Order Items
 // app.use('/items', orderItemsRoutes);
@@ -88,10 +95,10 @@ app.use('/orders', (req, res, next) => {
     }
   }, orderRoutes);
 
-//GET Request Latest Timestamp with cache
+// //GET Request Latest Timestamp with cache
 app.use('/timestamp', (req, res, next) => {
     const key = '__express__' + req.originalUrl || req.url;
-    const cachedData = cache.get(key);
+    const cachedData = timestampCache.get(key);
     if (cachedData) {
       console.log('serving from cache /timestamp');
       res.send(cachedData);
