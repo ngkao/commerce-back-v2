@@ -22,7 +22,8 @@ exports.up = function(knex) {
             .onUpdate('CASCADE')
             .onDelete('CASCADE');  
         table.integer('quantity').notNullable();
-        table.timestamps(true, true);
+        // table.timestamps(true, true);
+        table.timestamp('created_at').defaultTo(knex.raw('CURRENT_TIMESTAMP()'));
       });
 };
 
