@@ -14,5 +14,6 @@ module.exports = {
   },
   authPlugins: {
     mysql_native_password: process.env.mysql_native_password
-  }
+  },
+  timezone: 'UTC+8'
 };
