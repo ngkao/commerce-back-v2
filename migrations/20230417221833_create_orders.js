@@ -9,7 +9,8 @@ exports.up = function(knex) {
         table.string('customer_email').notNullable();
         table.string('customer_name').notNullable();
         table.integer('total_amount').notNullable();
-        table.timestamps(true, true);
+        // table.timestamps(true, true);
+        table.timestamp('created_at').defaultTo(knex.raw('CURRENT_TIMESTAMP()'));
       });
 };
 
