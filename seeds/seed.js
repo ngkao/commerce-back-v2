@@ -12,7 +12,7 @@ exports.seed = async function(knex) {
         description: 'Bubly Sparkling Water Raspberry',
         category: 'Soft Drinks',
         status: 'In Stock',
-        quantity: '12',
+        quantity: '42',
         purchase_price: '1',
         sale_price: '2',
         image_url: 'https://www.thebubbleverse.com/wp-content/uploads/2020/12/bubly-Raspberry.png'
@@ -23,7 +23,7 @@ exports.seed = async function(knex) {
         description: 'Caffeinated Pear Hibiscus Sparkling Water by Good & Gather',
         category: 'Soft Drinks',
         status: 'In Stock',
-        quantity: '25',
+        quantity: '35',
         purchase_price: '1',
         sale_price: '2',
         image_url: 'https://www.thebubbleverse.com/wp-content/uploads/2021/10/Good-Gather-Pear-Hibiscus.png'
@@ -158,113 +158,120 @@ exports.seed = async function(knex) {
       id: '1', 
       customer_email: 'jane12360@example.com',
       customer_name: 'Jane Smith',
-      total_amount: '6',
-      created_at: '2023-04-01 20:14:17'
+      total_amount: '8',
+      created_at: '2023-05-01 10:14:17'
     },
     {
       id: '2', 
       customer_email: 'ortiz@example.net',
       customer_name: 'Bethany Ortiz',
       total_amount: '4',
-      created_at: '2023-04-01 21:14:17'
+      created_at: '2023-05-01 13:14:17'
     },
     {
       id: '3', 
       customer_email: 'jodi.jackson@gmail.com',
       customer_name: 'Jodi Jackson',
-      total_amount: '2',
-      created_at: '2023-04-02 18:14:17'
+      total_amount: '3',
+      created_at: '2023-05-01 15:14:17'
     },
     {
       id: '4', 
       customer_email: 'joseph.lopez@gmail.com',
       customer_name: 'Joseph Lopez',
       total_amount: '15',
-      created_at: '2023-04-02 20:04:17'
+      created_at: '2023-05-02 12:04:17'
     },
     {
       id: '5', 
       customer_email: 'jodi.jackson@gmail.com',
       customer_name: 'Jodi Jackson',
       total_amount: '12',
-      created_at: '2023-04-03 17:14:17'
+      created_at: '2023-05-02 17:14:17'
     },
     {
       id: '6', 
       customer_email: 'jesse.bell@gmail.com',
       customer_name: 'Jesse Bell',
       total_amount: '24',
-      created_at: '2023-04-03 20:20:17'
+      created_at: '2023-05-02 18:20:17'
     },
     {
       id: '7', 
       customer_email: 'alvarez@gmail.com',
       customer_name: 'Nathaniel Alvarez',
       total_amount: '4',
-      created_at: '2023-04-03 21:16:17'
+      created_at: '2023-05-03 09:16:17'
     },
     {
       id: '8', 
       customer_email: 'barnett@gmail.com',
       customer_name: 'Gregory Barnett',
       total_amount: '4',
-      created_at: '2023-04-04 21:14:17'
+      created_at: '2023-05-03 11:14:17'
     },
     {
       id: '9', 
       customer_email: 'salazar@gmail.com',
       customer_name: 'Monica Salazar',
       total_amount: '3',
-      created_at: '2023-04-05 21:14:17'
+      created_at: '2023-05-03 13:14:17'
     },
     {
       id: '10', 
       customer_email: 'danielle.lewis@gmail.com',
       customer_name: 'Danielle Lewis',
-      total_amount: '2',
-      created_at: '2023-04-06 21:14:17'
+      total_amount: '4',
+      created_at: '2023-05-04 09:14:17'
     },
     {
       id: '11', 
       customer_email: 'lee789@example.com',
       customer_name: 'Ethan Lee',
       total_amount: '7',
-      created_at: '2023-04-07 21:14:17'
+      created_at: '2023-05-04 11:14:17'
     },
     {
       id: '12', 
       customer_email: 'davis012@example.com',
       customer_name: 'Olivia Davis',
       total_amount: '2',
-      created_at: '2023-04-08 21:14:17'
+      created_at: '2023-05-04 13:14:17'
     },
     {
       id: '13', 
       customer_email: 'mia234@example.com',
       customer_name: 'Mia Martinez',
       total_amount: '2',
-      created_at: '2023-04-09 21:14:17'
+      created_at: '2023-05-05 09:14:17'
     },
     {
       id: '14', 
       customer_email: 'taylor567@example.com',
       customer_name: 'William Taylor',
       total_amount: '9',
-      created_at: '2023-04-10 21:14:17'
+      created_at: '2023-05-05 11:14:17'
     },
     {
       id: '15', 
       customer_email: 'lau438@example.com',
       customer_name: 'Peter Lau',
       total_amount: '9',
-      created_at: '2023-04-11 21:14:17'
+      created_at: '2023-05-05 13:14:17'
     },
     {
       id: '16', 
-      customer_email: 'taylor567@example.com',
+      customer_email: 'kevinng567@example.com',
       customer_name: 'Kevin Nguyen',
       total_amount: '5',
-      created_at: '2023-04-12 13:14:17'
+      created_at: '2023-05-05 14:14:17'
+    },
+    {
+      id: '17', 
+      customer_email: 'fadelasisha@gmail.com',
+      customer_name: 'Aisha Fadel',
+      total_amount: '10',
+      created_at: '2023-05-06 09:14:17'
     }
   ]);
 
@@ -334,7 +341,7 @@ exports.seed = async function(knex) {
       id: '11', 
       order_id: '7',
       product_id: '4', 
-      quantity: '1'
+      quantity: '2'
     },
     {
       id: '12', 
@@ -413,6 +420,18 @@ exports.seed = async function(knex) {
       order_id: '16',
       product_id: '10', 
       quantity: '1'
+    },
+    {
+      id: '25', 
+      order_id: '17',
+      product_id: '7', 
+      quantity: '2'
+    },
+    {
+      id: '26', 
+      order_id: '17',
+      product_id: '8', 
+      quantity: '2'
     }
   ]);
 
