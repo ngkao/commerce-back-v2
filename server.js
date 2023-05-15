@@ -282,42 +282,63 @@ const fulfillOrder = (lineItems, orderData) => {
             .catch((err) => console.log(`Error creating Inventory: ${err}`))
 
 
-            // order_items
-            const newOrderItem = (lineItems.data).map((item) => ({
-                id: uuid(),
-                product_id: item.price.product.metadata.product_id, // this is product_id
-                order_id,
-                quantity: item.quantity
-            }))
-            console.log("ItemOrder", newOrderItem)
-  
-            for (let i = 0; i < newOrderItem.length; i++) {
-                let  itemObj = newOrderItem[i];
-                let currentInv = "";
-                //Getting Current Inv Count and Updating 
-                knex("products")
-                .select("quantity")
-                .where({id: itemObj.product_id})
-                .then((data) => {
-                    currentInv = data[0].quantity;
-                    return knex("products")
-                    .where({ id: itemObj.product_id })
-                    .update({ quantity: currentInv - itemObj.quantity })
-                })
-                .then((data) => {
-                    console.log("Updated Inv", data)
-                })
-                .catch((err) => console.log(err))
-            }
-            
-            // Posting Order_Items in Database
+            //order_items
+
             knex("order_items")
-                .insert(newOrderItem)
-                .then((data) => {
-                    console.log("201 POST")
-                })
-                .catch((err) => console.log(`Error creating Inventory: ${err}`))
+                .select('id')
+                .then(orderIds => {
+                    const orderIdData = orderIds.map(orderItemObj => ({
+                        ...orderItemObj,
+                        id: parseInt(orderItemObj.id)
+                      }));
+
+                      const highestId = orderIdData.reduce((acc, orderItemObj) => {
+                        return orderItemObj.id > acc ? orderItemObj.id : acc;
+                        }, 0);
+                
+                        const nextItemId = parseInt(highestId) + 1;
+                        order_item_id = nextItemId.toString();
+             
+
+                    // creating order_items
+                    const newOrderItem = (lineItems.data).map((item) => ({
+                        // id: uuid(),
+                        id: order_item_id,
+                        product_id: item.price.product.metadata.product_id, // this is product_id
+                        order_id,
+                        quantity: item.quantity
+                    }))
+                    console.log("ItemOrder", newOrderItem)
+        
+                    for (let i = 0; i < newOrderItem.length; i++) {
+                        let  itemObj = newOrderItem[i];
+                        let currentInv = "";
+                        //Getting Current Inv Count and Updating 
+                        knex("products")
+                        .select("quantity")
+                        .where({id: itemObj.product_id})
+                        .then((data) => {
+                            currentInv = data[0].quantity;
+                            return knex("products")
+                            .where({ id: itemObj.product_id })
+                            .update({ quantity: currentInv - itemObj.quantity })
+                        })
+                        .then((data) => {
+                            console.log("Updated Inv", data)
+                        })
+                        .catch((err) => console.log(err))
+                    }
+            
+                    // Posting Order_Items in Database
+                    knex("order_items")
+                        .insert(newOrderItem)
+                        .then((data) => {
+                            console.log("201 POST")
+                        })
+                        .catch((err) => console.log(`Error creating Inventory: ${err}`))
+                    })
             })
+
 
         .catch(error => {
             console.error(error);
