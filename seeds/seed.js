@@ -159,119 +159,119 @@ exports.seed = async function(knex) {
       customer_email: 'jane12360@example.com',
       customer_name: 'Jane Smith',
       total_amount: '8',
-      created_at: '2023-05-01 10:14:17'
+      created_at: '2023-09-01 10:14:17'
     },
     {
       id: '2', 
       customer_email: 'ortiz@example.net',
       customer_name: 'Bethany Ortiz',
       total_amount: '4',
-      created_at: '2023-05-01 13:14:17'
+      created_at: '2023-09-01 13:14:17'
     },
     {
       id: '3', 
       customer_email: 'jodi.jackson@gmail.com',
       customer_name: 'Jodi Jackson',
       total_amount: '3',
-      created_at: '2023-05-02 10:14:17'
+      created_at: '2023-09-02 10:14:17'
     },
     {
       id: '4', 
       customer_email: 'joseph.lopez@gmail.com',
       customer_name: 'Joseph Lopez',
       total_amount: '15',
-      created_at: '2023-05-03 12:04:17'
+      created_at: '2023-09-03 12:04:17'
     },
     {
       id: '5', 
       customer_email: 'jodi.jackson@gmail.com',
       customer_name: 'Jodi Jackson',
       total_amount: '12',
-      created_at: '2023-05-04 17:14:17'
+      created_at: '2023-09-04 17:14:17'
     },
     {
       id: '6', 
       customer_email: 'jesse.bell@gmail.com',
       customer_name: 'Jesse Bell',
       total_amount: '24',
-      created_at: '2023-05-05 18:20:17'
+      created_at: '2023-09-05 18:20:17'
     },
     {
       id: '7', 
       customer_email: 'alvarez@gmail.com',
       customer_name: 'Nathaniel Alvarez',
       total_amount: '4',
-      created_at: '2023-05-06 09:16:17'
+      created_at: '2023-09-06 09:16:17'
     },
     {
       id: '8', 
       customer_email: 'barnett@gmail.com',
       customer_name: 'Gregory Barnett',
       total_amount: '4',
-      created_at: '2023-05-07 11:14:17'
+      created_at: '2023-09-07 11:14:17'
     },
     {
       id: '9', 
       customer_email: 'salazar@gmail.com',
       customer_name: 'Monica Salazar',
       total_amount: '3',
-      created_at: '2023-05-08 13:14:17'
+      created_at: '2023-09-08 13:14:17'
     },
     {
       id: '10', 
       customer_email: 'danielle.lewis@gmail.com',
       customer_name: 'Danielle Lewis',
       total_amount: '4',
-      created_at: '2023-05-09 09:14:17'
+      created_at: '2023-09-09 09:14:17'
     },
     {
       id: '11', 
       customer_email: 'lee789@example.com',
       customer_name: 'Ethan Lee',
       total_amount: '7',
-      created_at: '2023-05-10 11:14:17'
+      created_at: '2023-09-10 11:14:17'
     },
     {
       id: '12', 
       customer_email: 'davis012@example.com',
       customer_name: 'Olivia Davis',
       total_amount: '2',
-      created_at: '2023-05-11 13:14:17'
+      created_at: '2023-09-11 13:14:17'
     },
     {
       id: '13', 
       customer_email: 'mia234@example.com',
       customer_name: 'Mia Martinez',
       total_amount: '2',
-      created_at: '2023-05-12 09:14:17'
+      created_at: '2023-09-12 09:14:17'
     },
     {
       id: '14', 
       customer_email: 'taylor567@example.com',
       customer_name: 'William Taylor',
       total_amount: '9',
-      created_at: '2023-05-13 11:14:17'
+      created_at: '2023-09-13 11:14:17'
     },
     {
       id: '15', 
       customer_email: 'lau438@example.com',
       customer_name: 'Peter Lau',
       total_amount: '9',
-      created_at: '2023-05-13 13:14:17'
+      created_at: '2023-09-13 13:14:17'
     },
     {
       id: '16', 
       customer_email: 'kevinng567@example.com',
       customer_name: 'Kevin Nguyen',
       total_amount: '5',
-      created_at: '2023-05-14 14:14:17'
+      created_at: '2023-09-14 14:14:17'
     },
     {
       id: '17', 
       customer_email: 'fadelasisha@gmail.com',
       customer_name: 'Aisha Fadel',
       total_amount: '10',
-      created_at: '2023-05-14 15:14:17'
+      created_at: '2023-09-14 15:14:17'
     }
   ]);
 
