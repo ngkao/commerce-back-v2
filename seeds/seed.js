@@ -236,42 +236,42 @@ exports.seed = async function(knex) {
       customer_email: 'davis012@example.com',
       customer_name: 'Olivia Davis',
       total_amount: '2',
-      created_at: '2023-09-11 13:14:17'
+      created_at: '2023-09-10 13:14:17'
     },
     {
       id: '13', 
       customer_email: 'mia234@example.com',
       customer_name: 'Mia Martinez',
       total_amount: '2',
-      created_at: '2023-09-12 09:14:17'
+      created_at: '2023-09-10 09:14:17'
     },
     {
       id: '14', 
       customer_email: 'taylor567@example.com',
       customer_name: 'William Taylor',
       total_amount: '9',
-      created_at: '2023-09-13 11:14:17'
+      created_at: '2023-09-11 11:14:17'
     },
     {
       id: '15', 
       customer_email: 'lau438@example.com',
       customer_name: 'Peter Lau',
       total_amount: '9',
-      created_at: '2023-09-13 13:14:17'
+      created_at: '2023-09-11 13:14:17'
     },
     {
       id: '16', 
       customer_email: 'kevinng567@example.com',
       customer_name: 'Kevin Nguyen',
       total_amount: '5',
-      created_at: '2023-09-14 14:14:17'
+      created_at: '2023-09-12 14:14:17'
     },
     {
       id: '17', 
       customer_email: 'fadelasisha@gmail.com',
       customer_name: 'Aisha Fadel',
       total_amount: '10',
-      created_at: '2023-09-14 15:14:17'
+      created_at: '2023-09-12 15:14:17'
     }
   ]);
 
