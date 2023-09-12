@@ -1,14 +1,13 @@
 const knex = require("knex")(require("../knexfile"));
 
 exports.getOrderTimestamp = (req, res) => {
-    knex
+  knex
     .select("created_at", "customer_name")
     .from("orders")
-    .orderBy('created_at', 'desc')
-    // .first()
+    .orderBy("created_at", "desc")
     .then((data) => {
-        const latestTimestamp = data[0];
-        res.status(200).json(latestTimestamp);
+      const latestTimestamp = data[0];
+      res.status(200).json(latestTimestamp);
     })
-    .catch((err) => res.status(400).send(`Error retrieving products ${err}`))
-}
+    .catch((err) => res.status(400).send(`Error retrieving products ${err}`));
+};
