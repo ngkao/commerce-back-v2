@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { getProducts, addProduct,getProductsSold } = require("../controllers/productController");
+const {
+  getProducts,
+  addProduct,
+  getProductsSold,
+} = require("../controllers/productController");
 
 router.use(express.json());
 
