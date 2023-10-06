@@ -15,6 +15,10 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const STRIPE_SECRET = process.env.STRIPE_SECRET;
 const PORT = process.env.PORT;
 
+console.log(process.env.DB_USER);
+console.log(process.env.DB_PASSWORD);
+console.log(process.env.DB_HOST);
+
 const cache = new NodeCache({
   stdTTL: 60,
   checkperiod: 120,
